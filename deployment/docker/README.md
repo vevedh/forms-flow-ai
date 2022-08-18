@@ -231,3 +231,6 @@ Modify the file **mail-config.properties** (under `forms-flow-bpm/src/main/resou
 > End to end usage of formsflow.ai is mentioned in this section with sample forms and workflows.
 
 * The complete usage instructions with examples are mentioned [here](./../../USAGE.md).
+
+docker build -f ./../../forms-flow-bpm/Dockerfile -t vevedh/forms-flow-bpm:latest ./../../forms-flow-bpm/
+docker build -f ./../../forms-flow-api/Dockerfile -t vevedh/forms-flow-api:latest ./../../forms-flow-api/

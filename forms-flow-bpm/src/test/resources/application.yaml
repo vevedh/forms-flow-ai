@@ -33,10 +33,10 @@ rest.security:
   required-audience: camunda-rest-api
 
 plugin.identity.keycloak:
-  keycloakIssuerUrl: http://localhost:8080/auth/realms/forms-flow-ai
-  keycloakAdminUrl: http://localhost:8080/auth/admin/realms/forms-flow-ai
+  keycloakIssuerUrl: ${keycloak.url.client}/auth/realms/forms-flow-ai
+  keycloakAdminUrl: ${keycloak.url.client}/auth/admin/realms/forms-flow-ai
   clientId: forms-flow-bpm
-  clientSecret: e3238a38-5e5a-45bb-b4e6-d7eb5855cf3a
+  clientSecret: ${keycloak.clientSecret}
   useEmailAsCamundaUserId: false
   useUsernameAsCamundaUserId: true
   useGroupPathAsCamundaGroupId: true
