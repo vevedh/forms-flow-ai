@@ -20,7 +20,6 @@ services:
 
   forms-flow-bpm:
     container_name: forms-flow-bpm
-    #image: formsflow/forms-flow-bpm:latest
     build:
       context: ./../../../../../forms-flow-bpm/
       dockerfile: Dockerfile
@@ -111,7 +110,7 @@ services:
 
   forms-flow-web:
     container_name: forms-flow-web
-    image: formsflow/forms-flow-web:latest
+    image: vevedh/forms-flow-web:latest
     volumes:
       - ./config.js:/usr/share/nginx/html/config/config.js
     ports:

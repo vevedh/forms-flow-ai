@@ -1606,7 +1606,7 @@
 				"type": "text/javascript",
 				"exec": [
 					"var client_id     = \"forms-flow-bpm\"; // the name of the client you created in Keycloak",
-					"var client_secret = \"{{keycloakClientSecret}}\"; // the secret you copied earlier",
+					"var client_secret = \"ab8ffc8d-0048-4324-a027-721e830b2e20\"; // the secret you copied earlier",
 					"",
 					"// creating the body of the request",
 					"var formBody = [];",
@@ -1615,7 +1615,7 @@
 					"",
 					"// request to Keycloak",
 					"pm.sendRequest({",
-					"    url: \"{{keycloakUrl}}/auth/realms/forms-flow-ai/protocol/openid-connect/token\",",
+					"    url: \"http://svrdevweb.agglo.local:8024/auth/realms/forms-flow-ai/protocol/openid-connect/token\",",
 					"    method: 'POST',",
 					"    header: {",
 					"        'Content-Type': 'application/x-www-form-urlencoded',",

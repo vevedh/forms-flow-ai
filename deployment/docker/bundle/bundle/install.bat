@@ -47,6 +47,7 @@ EXIT /B %ERRORLEVEL%
 
 :find-my-ip
     FOR /F "tokens=4 delims= " %%i in ('route print ^| find " 0.0.0.0"') do set ip-add=%%i
+    echo %ip-add%
     EXIT /B 0
   
 :set-common-properties
@@ -115,7 +116,7 @@ EXIT /B %ERRORLEVEL%
    set REACT_APP_API_PROJECT_URL="http://%ip-add%:3001",
    set REACT_APP_KEYCLOAK_CLIENT="forms-flow-web",
    set REACT_APP_KEYCLOAK_URL_REALM="forms-flow-ai",
-   set REACT_APP_KEYCLOAK_URL="http://%ip-add%:8080",
+   set REACT_APP_KEYCLOAK_URL="%KEYCLOAK_URL%",
    set REACT_APP_WEB_BASE_URL="http://%ip-add%:5000",
    set REACT_APP_CAMUNDA_API_URI="http://%ip-add%:8000/camunda",
    set REACT_APP_WEBSOCKET_ENCRYPT_KEY="giert989jkwrgb@DR55",
@@ -168,7 +169,7 @@ EXIT /B %ERRORLEVEL%
     SETLOCAL
     call:clear-dir %~1
     set FORMSFLOW_API_URL=http://%ip-add%:5000
-    set WEBSOCKET_SECURITY_ORIGIN=http://%ip-add%:3000
+    set WEBSOCKET_SECURITY_ORIGIN=http://localhost:3000
     set FORMIO_DEFAULT_PROJECT_URL=http://%ip-add%:3001
 
     echo KEYCLOAK_URL=%KEYCLOAK_URL%>>%~1\.env

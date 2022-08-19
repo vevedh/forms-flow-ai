@@ -233,4 +233,10 @@ Modify the file **mail-config.properties** (under `forms-flow-bpm/src/main/resou
 * The complete usage instructions with examples are mentioned [here](./../../USAGE.md).
 
 docker build -f ./../../forms-flow-bpm/Dockerfile -t vevedh/forms-flow-bpm:latest ./../../forms-flow-bpm/
+docker push vevedh/forms-flow-bpm:latest
 docker build -f ./../../forms-flow-api/Dockerfile -t vevedh/forms-flow-api:latest ./../../forms-flow-api/
+docker push vevedh/forms-flow-api:latest
+docker build -f ./../../forms-flow-web/Dockerfile -t vevedh/forms-flow-web:latest ./../../forms-flow-web/
+docker push vevedh/forms-flow-web:latest
+docker build -f ./../../forms-flow-analytics/Dockerfile -t vevedh/forms-flow-analytics:latest ./../../forms-flow-analytics/
+docker push vevedh/forms-flow-analytics:latest
