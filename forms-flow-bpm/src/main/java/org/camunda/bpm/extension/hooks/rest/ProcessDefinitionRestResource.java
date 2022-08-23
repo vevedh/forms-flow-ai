@@ -34,12 +34,12 @@ public interface ProcessDefinitionRestResource extends RestResource{
     @GET
     @Path("/key/{key}/xml")
     @Produces(MediaType.APPLICATION_JSON)
-    EntityModel<ProcessDefinitionDiagramDto> getProcessDefinitionBpmn20Xml(@PathParam("key") String key);
+    EntityModel<ProcessDefinitionDiagramDto> getProcessDefinitionBpmn20Xml(@QueryParam("tenantId") String tenantId, @PathParam("key") String key);
 
     @POST
     @Path("/key/{key}/start")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     EntityModel<ProcessInstanceDto> startProcessInstanceByKey(
-            @Context UriInfo context, StartProcessInstanceDto parameters, @PathParam("key") String key);
+            @Context UriInfo context, StartProcessInstanceDto parameters, @PathParam("key") String key, @QueryParam("tenantId") String tenantId);
 }

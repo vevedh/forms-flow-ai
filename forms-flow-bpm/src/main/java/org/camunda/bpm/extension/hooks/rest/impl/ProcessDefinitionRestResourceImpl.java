@@ -45,17 +45,28 @@ public class ProcessDefinitionRestResourceImpl implements ProcessDefinitionRestR
     }
 
     @Override
-    public EntityModel<ProcessDefinitionDiagramDto> getProcessDefinitionBpmn20Xml(String key) {
-        ProcessDefinitionDiagramDto dto =  restService.getProcessDefinitionByKey(key).getProcessDefinitionBpmn20Xml();
-        return EntityModel.of(dto, linkTo(methodOn(ProcessDefinitionRestResourceImpl.class).getProcessDefinitionBpmn20Xml(key)).withSelfRel());
+    public EntityModel<ProcessDefinitionDiagramDto> getProcessDefinitionBpmn20Xml(String tenantId, String key) {
+        ProcessDefinitionDiagramDto dto;
+        if (tenantId!= null){
+            dto =  restService.getProcessDefinitionByKeyAndTenantId(key, tenantId).getProcessDefinitionBpmn20Xml();
+        }
+        else{
+            dto =  restService.getProcessDefinitionByKey(key).getProcessDefinitionBpmn20Xml();
+        }
+
+        return EntityModel.of(dto, linkTo(methodOn(ProcessDefinitionRestResourceImpl.class).getProcessDefinitionBpmn20Xml(tenantId, key)).withSelfRel());
     }
 
     @Override
-    public EntityModel<ProcessInstanceDto> startProcessInstanceByKey(UriInfo context, StartProcessInstanceDto parameters, String key) {
-
-        org.camunda.bpm.engine.rest.dto.runtime.ProcessInstanceDto processInstanceDto = restService.getProcessDefinitionByKey(key).startProcessInstance(context, parameters);
-
+    public EntityModel<ProcessInstanceDto> startProcessInstanceByKey(UriInfo context, StartProcessInstanceDto parameters, String key, String tenantId) {
+        ProcessInstanceDto processInstanceDto;
+        if (tenantId!= null){
+            processInstanceDto = restService.getProcessDefinitionByKeyAndTenantId(key, tenantId).startProcessInstance(context, parameters);
+        }
+        else{
+            processInstanceDto = restService.getProcessDefinitionByKey(key).startProcessInstance(context, parameters);
+        }
         return EntityModel.of(processInstanceDto,
-                linkTo(methodOn(ProcessDefinitionRestResourceImpl.class).startProcessInstanceByKey(context, parameters, key)).withSelfRel());
+                linkTo(methodOn(ProcessDefinitionRestResourceImpl.class).startProcessInstanceByKey(context, parameters, key, tenantId)).withSelfRel());
     }
 }
